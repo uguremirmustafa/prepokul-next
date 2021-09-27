@@ -3,7 +3,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 interface Props {}
 
-const Home = (props: Props) => {
+const Home = ({}: Props) => {
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <div>Loading...</div>;
