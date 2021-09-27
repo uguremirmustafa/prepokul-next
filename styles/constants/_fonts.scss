@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Righteous';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Righteous'), local('Righteous'),
+    url('../../public/fonts/righteous-v9-latin-ext-regular.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Poppins'), local('Poppins'),
+    url('../../public/fonts/poppins-v15-latin-ext-regular.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: medium;
+  src: local('Poppins'), local('Poppins'),
+    url('../../public/fonts/poppins-v15-latin-ext-500.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: medium;
+  src: local('Poppins'), local('Poppins'),
+    url('../../public/fonts/poppins-v15-latin-ext-500italic.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Poppins'), local('Poppins'),
+    url('../../public/fonts/poppins-v15-latin-ext-700.woff2') format('woff2');
+  font-display: swap;
+}

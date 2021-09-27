@@ -1,0 +1,113 @@
+@use '../constants/colors' as *;
+.header {
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  .logo {
+    cursor: pointer;
+    font-family: Righteous;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  > ul {
+    display: flex;
+    gap: 1rem;
+    > li {
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      padding: 2px;
+      display: block;
+      &:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: $color-primary-200;
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        transition: all ease 0.3s;
+        z-index: -1;
+        border-radius: 0.3rem;
+      }
+      &:hover:after {
+        transform: skew(5deg, -5deg) scaleY(16) translateY(-0.8px);
+        transform-origin: center;
+      }
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .logout,
+  .login {
+    margin-left: 1rem;
+  }
+}
+.blog-categories,
+.activity-categories {
+  position: absolute;
+  left: -100px;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
+    0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
+    0 16px 16px hsl(0deg 0% 0% / 0.075);
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+  border-radius: 0.5rem;
+  z-index: 2;
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    span {
+      color: $color-teriatry-300;
+      cursor: pointer;
+      position: relative;
+      font-size: 0.9rem;
+      transition: color ease-in-out 0.3s;
+      z-index: 2;
+      &:hover {
+        color: $color-teriatry-200;
+      }
+    }
+  }
+}
+.blog-categories {
+  width: 250px;
+  grid-template-columns: 1fr;
+}
+.activity-categories {
+  width: 500px;
+  grid-template-columns: 1fr 1fr;
+}
+.blogMenu,
+.activityMenu {
+  display: none;
+  position: relative;
+  top: 5px;
+  opacity: 0;
+}
+.blog-link:hover .blogMenu {
+  display: block;
+}
+.activity-link:hover .activityMenu {
+  display: block;
+}

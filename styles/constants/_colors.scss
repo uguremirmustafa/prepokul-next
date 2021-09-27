@@ -1,0 +1,82 @@
+$color-primary-100: hsla(40, 95%, 57%, 1);
+$color-primary-200: hsla(30, 95%, 57%, 1);
+$color-primary-300: hsla(20, 95%, 57%, 1);
+
+$color-secondary-100: hsla(20, 78%, 44%, 1);
+$color-secondary-200: hsla(10, 78%, 44%, 1);
+$color-secondary-300: hsla(2, 78%, 44%, 1);
+
+$color-teriatry-100: rgb(92, 238, 214);
+$color-teriatry-200: hsla(170, 95%, 36%, 1);
+$color-teriatry-300: rgb(52, 112, 102);
+
+$color-dark-100: rgb(175, 175, 175);
+$color-dark-200: rgb(131, 131, 131);
+$color-dark-300: rgb(109, 109, 109);
+
+$color-light-100: rgb(255, 255, 255);
+$color-light-200: rgb(223, 223, 223);
+$color-light-300: rgb(194, 194, 194);
+
+$colors: (
+  primary: (
+    100: $color-primary-100,
+    200: $color-primary-200,
+    300: $color-primary-300,
+  ),
+  secondary: (
+    100: $color-secondary-100,
+    200: $color-secondary-200,
+    300: $color-secondary-300,
+  ),
+  teriatry: (
+    100: $color-teriatry-100,
+    200: $color-teriatry-200,
+    300: $color-teriatry-300,
+  ),
+  dark: (
+    100: $color-dark-100,
+    200: $color-dark-200,
+    300: $color-dark-300,
+  ),
+  light: (
+    100: $color-light-100,
+    200: $color-light-200,
+    300: $color-light-300,
+  ),
+);
+
+$colorRange: (300, 200, 100);
+
+@function findNearest($list, $key) {
+  $lastFound: nth($list, 1);
+  @each $element in $list {
+    @if $key <= $element {
+      $lastFound: $element;
+    }
+  }
+  @return $lastFound;
+}
+
+@mixin color-modifiers($attribute: 'color', $prefix: '-', $separator: '-') {
+  @each $name, $color in $colors {
+    &#{$prefix}#{$name} {
+      & {
+        #{$attribute}: map-get($color, nth(map-keys($color), 1));
+      }
+
+      @each $key in $colorRange {
+        $found: findNearest(map-keys($color), $key);
+        @if $found {
+          &.tone#{$separator}#{$key} {
+            #{$attribute}: map-get($color, $found);
+          }
+        }
+      }
+    }
+  }
+}
+
+.color {
+  @include color-modifiers();
+}

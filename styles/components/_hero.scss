@@ -1,0 +1,136 @@
+@use '../constants/colors' as *;
+.hero {
+  width: 100%;
+  height: 90vh;
+  margin-top: 3rem;
+  margin-bottom: -3rem;
+
+  .heroPost {
+    height: 65%;
+    position: relative;
+    &:hover .imageWrapper > .filter {
+      opacity: 0.6;
+    }
+    .content {
+      position: absolute;
+      z-index: 1;
+      top: 4rem;
+      left: 4rem;
+      h2 {
+        cursor: pointer;
+        font-size: 3rem;
+        color: $color-light-100;
+        max-width: 35rem;
+      }
+      p {
+        margin-top: 2rem;
+        font-size: 1rem;
+        border-radius: 1rem;
+        padding: 0.3rem 0.6rem;
+        border: 1px solid $color-light-100;
+        color: $color-light-100;
+        width: max-content;
+        cursor: pointer;
+      }
+      span {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        border-radius: 1rem;
+        color: $color-light-100;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        svg {
+          width: 0.8rem;
+          fill: white;
+        }
+      }
+    }
+
+    .imageWrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+      overflow: hidden;
+      .filter {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-blend-mode: darken;
+        background-color: rgba(1, 1, 1, 0.4);
+        opacity: 1;
+        transition: all ease-in-out 0.3s;
+      }
+    }
+  }
+  .highlightedPosts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    padding: 0 2rem;
+    gap: 2rem;
+    top: -5rem;
+    height: 30%;
+    > div {
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
+        0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
+        0 16px 16px hsl(0deg 0% 0% / 0.075);
+      &:hover .wrapper > .filter {
+        opacity: 0.6;
+      }
+      .content {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 1;
+        span {
+          margin-bottom: 2rem;
+          font-size: 0.8rem;
+          color: $color-light-100;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          width: max-content;
+          border-bottom: 1px solid $color-light-100;
+          svg {
+            width: 0.8rem;
+            fill: white;
+          }
+        }
+        h2 {
+          font-size: 1.5rem;
+          color: $color-light-100;
+          max-width: 12rem;
+        }
+      }
+      .wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        overflow: hidden;
+        .filter {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-blend-mode: darken;
+          background-color: rgba(1, 1, 1, 0.4);
+          opacity: 1;
+          transition: all ease-in-out 0.3s;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}

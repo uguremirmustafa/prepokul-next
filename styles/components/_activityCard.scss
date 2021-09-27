@@ -1,0 +1,59 @@
+@use '../constants/colors' as *;
+
+.activities {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.activity-card {
+  width: 100%;
+  height: 20rem;
+  border-radius: 1rem;
+  position: relative;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
+    0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
+    0 16px 16px hsl(0deg 0% 0% / 0.075);
+  &:hover .wrapper > .filter {
+    opacity: 0.6;
+  }
+  &:hover h2 {
+    // color: $color-secondary-200;
+    text-shadow: 0 0 20px 200px $color-light-100;
+  }
+  h2 {
+    position: absolute;
+    font-size: 1.8rem;
+    text-align: center;
+    top: 1rem;
+    padding: 1rem;
+    z-index: 1;
+    color: $color-light-100;
+    transition: ease-in-out all 0.3s;
+  }
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    .filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-blend-mode: darken;
+      background-color: rgba(1, 1, 1, 0.5);
+      opacity: 1;
+      transition: all ease-in-out 0.3s;
+    }
+  }
+  .download {
+    display: block;
+    text-align: center;
+    position: relative;
+    bottom: 3.5rem;
+    width: 80%;
+    margin: auto;
+  }
+}
