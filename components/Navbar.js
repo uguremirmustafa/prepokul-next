@@ -26,7 +26,7 @@ const Navbar = ({ blogCategories, activityCategories }) => {
       <nav className="navbar">
         <Link href="/">
           <div className="logo">
-            <img src="logo.png" alt="prepokul logo" />
+            <img src="/logo.png" alt="prepokul logo" />
             Prepokul
           </div>
         </Link>
@@ -56,7 +56,7 @@ const Navbar = ({ blogCategories, activityCategories }) => {
                       <li key={cat._id}>
                         <BlogIcon />
                         <span>
-                          <Link href={`/blog/${cat.slug.current}`}>{cat.title}</Link>
+                          <Link href={`/blog/kategoriler/${cat.slug.current}`}>{cat.title}</Link>
                         </span>
                       </li>
                     ))}
@@ -80,12 +80,19 @@ const Navbar = ({ blogCategories, activityCategories }) => {
                   className="activityMenu"
                 >
                   <ul className="activity-categories">
+                    <li>
+                      <CategoryIcon />
+                      <span>
+                        <Link href="/etkinlikler">Tümünü gör</Link>
+                      </span>
+                    </li>
                     {activityCategories.map((cat) => (
                       <li key={cat._id}>
                         <CategoryIcon />
                         <span>
-                          {' '}
-                          <Link href={`/etkinlikler/${cat.slug.current}`}>{cat.title}</Link>
+                          <Link href={`/etkinlikler/kategoriler/${cat.slug.current}`}>
+                            {cat.title}
+                          </Link>
                         </span>
                       </li>
                     ))}

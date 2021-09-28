@@ -2,8 +2,9 @@ import React from 'react';
 import client from '../lib/sanityClient';
 import { posts } from '../lib/queries/posts';
 import BlogCard from '../components/BlogCard';
+import Pagination from '../components/Pagination';
 
-const Blog = ({ postsData }) => {
+const Blog = ({ postsData, count }) => {
   return (
     <div>
       {postsData && (
@@ -13,6 +14,7 @@ const Blog = ({ postsData }) => {
           ))}
         </div>
       )}
+      <Pagination type="blog" count={count} />
     </div>
   );
 };
@@ -21,19 +23,24 @@ export default Blog;
 
 export async function getServerSideProps(context) {
   context.res.setHeader('Cache-Control', 's-maxage=20, stale-while-revalidate');
-  let { start, end } = context.query;
-
+  let { start, end, perPage } = context.query;
+  if (!perPage) {
+    perPage = 6;
+  }
   if (!start) {
     start = 0;
   }
   if (!end) {
-    end = 6;
+    end = perPage;
   }
-
-  const postsData = await client.fetch(posts, { start: parseInt(start), end: parseInt(end) });
+  const { posts: postsData, count } = await client.fetch(posts, {
+    start: parseInt(start),
+    end: parseInt(end),
+  });
   return {
     props: {
       postsData,
+      count,
     },
   };
 }

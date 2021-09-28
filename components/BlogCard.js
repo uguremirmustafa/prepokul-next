@@ -92,21 +92,27 @@ const BlogCard = ({ post, index }) => {
           <CalendarIcon />
           {postDate}
         </span>
-        <h2>
-          {post.title}-{index}
-        </h2>
+        <h2>{post.title}</h2>
         {active !== index && <span className="category-name">{post.categoryName}</span>}
         {active === index && (
           <>
             <p className="excerpt">{post.excerpt}</p>
-            <span>
+            <span className="readmore">
               <Link href={`/blog/${post.slug.current}`}>devamını oku</Link>
             </span>
           </>
         )}
       </div>
       <div className="wrapper">
-        <Image src={postImage.src} loader={postImage.loader} layout="fill" objectFit="cover" />
+        <Image
+          src={postImage.src}
+          loader={postImage.loader}
+          placeholder="blur"
+          blurDataURL={postImage.blurDataURL}
+          quality={10}
+          layout="fill"
+          objectFit="cover"
+        />
         <div className="filter"></div>
       </div>
     </motion.div>

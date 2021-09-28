@@ -16,6 +16,7 @@
     top: 1rem;
     left: 1rem;
     color: $color-light-100;
+
     .excerpt {
       margin: 1rem 0;
       font-size: 0.75rem;
@@ -35,14 +36,12 @@
     }
     .date {
       margin: 1rem 0;
-      border-bottom: 1px solid $color-light-100;
       width: max-content;
-      color: $color-light-100;
       display: flex;
       align-items: center;
       gap: 0.3rem;
       svg {
-        width: 0.8rem;
+        width: 1rem;
         fill: white;
       }
     }
@@ -51,6 +50,17 @@
 
       position: relative;
       top: 0.5rem;
+    }
+    .readmore a {
+      padding: 0.3rem 0.6rem;
+      border: 1px solid $color-light-100;
+      border-radius: 1rem;
+      font-size: 0.6rem;
+      transition: all ease 0.3s;
+      &:hover {
+        background-color: $color-light-100;
+        color: $color-dark-300;
+      }
     }
   }
   .wrapper {
@@ -77,8 +87,3 @@
     }
   }
 }
-// .blog-card-shadow {
-//   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
-//     0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
-//     0 16px 16px hsl(0deg 0% 0% / 0.075);
-// }

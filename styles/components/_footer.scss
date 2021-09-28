@@ -1,0 +1,52 @@
+@use '../constants/colors' as *;
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  border-top: 1px solid $color-light-300;
+  padding: 1rem 0;
+  margin-top: 2rem;
+
+  .column-blog,
+  .column-activity,
+  .column-sitemap {
+    h4 {
+      border-bottom: 1px solid $color-light-300;
+      width: max-content;
+      margin-bottom: 0.5rem;
+    }
+    display: flex;
+    flex-direction: column;
+    column-gap: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .column-activity ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.3rem;
+    h4 {
+      grid-column: span 2;
+      //   width: 100%;
+    }
+  }
+  .credits {
+    grid-column: span 3;
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid $color-light-300;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .logos {
+      a {
+        display: inline-block;
+        margin: 0 0.5rem;
+      }
+    }
+    .sign {
+    }
+  }
+}

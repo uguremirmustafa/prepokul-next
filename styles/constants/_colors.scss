@@ -10,9 +10,13 @@ $color-teriatry-100: rgb(92, 238, 214);
 $color-teriatry-200: hsla(170, 95%, 36%, 1);
 $color-teriatry-300: rgb(52, 112, 102);
 
+$color-blue-100: rgb(56, 159, 255);
+$color-blue-200: rgb(24, 130, 230);
+$color-blue-300: rgb(0, 88, 170);
+
 $color-dark-100: rgb(175, 175, 175);
 $color-dark-200: rgb(131, 131, 131);
-$color-dark-300: rgb(109, 109, 109);
+$color-dark-300: rgb(0, 0, 0);
 
 $color-light-100: rgb(255, 255, 255);
 $color-light-200: rgb(223, 223, 223);
@@ -33,6 +37,11 @@ $colors: (
     100: $color-teriatry-100,
     200: $color-teriatry-200,
     300: $color-teriatry-300,
+  ),
+  blue: (
+    100: $color-blue-100,
+    200: $color-blue-200,
+    300: $color-blue-300,
   ),
   dark: (
     100: $color-dark-100,
