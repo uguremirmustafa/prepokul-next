@@ -1,5 +1,4 @@
 // import { AnimatePresence, motion } from 'framer-motion';
-import React from 'react';
 // import { useApp } from '../context/AppContext';
 
 const Container = ({ children }) => {
