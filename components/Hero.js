@@ -32,7 +32,10 @@ const Hero = ({ posts }) => {
           return (
             <div key={post.slug.current}>
               <div className="content">
-                <span>{formatDate(post.publishedAt)}</span>
+                <span>
+                  <CalendarIcon />
+                  {formatDate(post.publishedAt)}
+                </span>
                 <h2>{post.title}</h2>
               </div>
               <div className="wrapper">

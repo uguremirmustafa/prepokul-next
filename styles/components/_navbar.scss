@@ -1,6 +1,7 @@
 @use '../constants/colors' as *;
 .header {
   position: relative;
+  z-index: 3;
 }
 
 .navbar {

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { allBlogCategories } from '../lib/queries/allBlogCategories';
 import Layout from '../layouts/Layout';
 import { allActivityCategories } from '../lib/queries/allActivityCategories';
-
+import { AppProvider } from '../context/AppContext';
 function MyApp({ Component, pageProps }) {
   const [blogCategories, setBlogCategories] = useState([]);
   const [activityCategories, setActivityCategories] = useState([]);
@@ -21,11 +21,13 @@ function MyApp({ Component, pageProps }) {
     getAllCategoryNames();
   }, []);
   return (
-    <UserProvider>
-      <Layout blogCategories={blogCategories} activityCategories={activityCategories}>
-        <Component {...pageProps} />
-      </Layout>
-    </UserProvider>
+    <AppProvider>
+      <UserProvider>
+        <Layout blogCategories={blogCategories} activityCategories={activityCategories}>
+          <Component {...pageProps} />
+        </Layout>
+      </UserProvider>
+    </AppProvider>
   );
 }
 

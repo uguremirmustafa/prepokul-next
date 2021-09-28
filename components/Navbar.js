@@ -46,6 +46,12 @@ const Navbar = ({ blogCategories, activityCategories }) => {
                   className="blogMenu"
                 >
                   <ul className="blog-categories">
+                    <li>
+                      <BlogIcon />
+                      <span>
+                        <Link href="/blog">Tümünü gör</Link>
+                      </span>
+                    </li>
                     {blogCategories.map((cat) => (
                       <li key={cat._id}>
                         <BlogIcon />
@@ -89,10 +95,10 @@ const Navbar = ({ blogCategories, activityCategories }) => {
             </AnimatePresence>
           </li>
           <li>
-            <Link href="hakkimda">Hakkımda</Link>
+            <Link href="/hakkimda">Hakkımda</Link>
           </li>
           <li>
-            <Link href="iletisim">İletişim</Link>
+            <Link href="/iletisim">İletişim</Link>
           </li>
         </ul>
         {isLoading && <button className="btn">yükleniyor...</button>}
