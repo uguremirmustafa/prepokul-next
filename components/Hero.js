@@ -4,6 +4,7 @@ import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
 import { formatDate } from '../utils/date-formatter';
 import CalendarIcon from './svgs/calendarIcon';
+import Link from 'next/link';
 
 const Hero = ({ posts }) => {
   const heroPost = posts[0];
@@ -30,24 +31,26 @@ const Hero = ({ posts }) => {
         {highlihtedPosts.map((post) => {
           const postImage = useNextSanityImage(client, post.mainImage);
           return (
-            <div key={post.slug.current}>
-              <div className="content">
-                <span>
-                  <CalendarIcon />
-                  {formatDate(post.publishedAt)}
-                </span>
-                <h2>{post.title}</h2>
+            <Link key={post.slug.current} href={`/blog/${post.slug.current}`}>
+              <div>
+                <div className="content">
+                  <span>
+                    <CalendarIcon />
+                    {formatDate(post.publishedAt)}
+                  </span>
+                  <h2>{post.title}</h2>
+                </div>
+                <div className="wrapper">
+                  <Image
+                    src={postImage.src}
+                    loader={postImage.loader}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                  <div className="filter"></div>
+                </div>
               </div>
-              <div className="wrapper">
-                <Image
-                  src={postImage.src}
-                  loader={postImage.loader}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <div className="filter"></div>
-              </div>
-            </div>
+            </Link>
           );
         })}
       </div>
