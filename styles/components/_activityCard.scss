@@ -1,4 +1,5 @@
 @use '../constants/colors' as *;
+@use '../layout/breakpoints' as *;
 
 .activities {
   display: grid;
@@ -13,6 +14,9 @@
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
     0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
     0 16px 16px hsl(0deg 0% 0% / 0.075);
+  @include media('<tablet') {
+    height: 14rem;
+  }
   &:hover .wrapper > .filter {
     opacity: 0.6;
   }
@@ -29,6 +33,9 @@
     z-index: 1;
     color: $color-light-100;
     transition: ease-in-out all 0.3s;
+    @include media('<tablet') {
+      font-size: 1.2rem;
+    }
   }
   .wrapper {
     position: relative;
@@ -55,5 +62,8 @@
     bottom: 3.5rem;
     width: 80%;
     margin: auto;
+    @include media('<tablet') {
+      bottom: 3rem;
+    }
   }
 }

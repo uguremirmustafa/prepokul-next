@@ -4,16 +4,8 @@ import { allPostPaths } from '../../../lib/queries/allPostPaths';
 import { allPostsUnderCategory } from '../../../lib/queries/allPostsUnderCategory';
 import SectionTitle from '../../../components/SectionTitle';
 import BlogCard from '../../../components/BlogCard';
-// import { useNextSanityImage } from 'next-sanity-image';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { formatDate } from '../../../utils/date-formatter';
-// import { config } from '../../../lib/sanityConfig';
 
 const Blog = ({ data }) => {
-  // const image = useNextSanityImage(client, post.mainImage);
-  // const avatar = useNextSanityImage(client, post.author.image);
-
   return (
     <>
       {data && (

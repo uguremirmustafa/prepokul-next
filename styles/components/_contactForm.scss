@@ -1,0 +1,69 @@
+@use '../constants/colors' as *;
+.form {
+  width: 100%;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    div {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 1rem;
+      label {
+        color: black;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: bold;
+      }
+      input,
+      textarea {
+        color: #343434;
+        border-radius: 5px;
+        outline: none;
+        border: 2px solid $color-dark-300;
+        padding: 8px 10px;
+        width: 100%;
+        background-color: white;
+        line-height: 1.3rem;
+        transition: all 0.3s ease-in-out;
+        :active,
+        :focus {
+          border: 2px solid $color-primary-300;
+        }
+        :hover {
+          border: 2px solid $color-primary-300;
+        }
+      }
+      textarea {
+        min-height: 100px;
+        width: 100%;
+      }
+      .error {
+        color: red;
+        font-size: 11px;
+        padding: 5px;
+        display: block;
+        height: 15px;
+      }
+    }
+    button {
+      color: #343434;
+      border-radius: 5px;
+      outline: none;
+      border: 2px solid rgba(38, 50, 56, 1);
+      padding: 8px 10px;
+      background-color: white;
+      transition: all 0.3s ease-in-out;
+      line-height: 1.3rem;
+      :active,
+      :focus {
+        border: 2px solid rgba(124, 164, 75, 1);
+      }
+      :hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}

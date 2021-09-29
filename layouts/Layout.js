@@ -6,6 +6,7 @@ import { allBlogCategories } from '../lib/queries/allBlogCategories';
 import { allActivityCategories } from '../lib/queries/allActivityCategories';
 import { useQuery } from 'react-query';
 import Footer from '../components/Footer';
+
 const Layout = ({ children }) => {
   const { data: blogCategories } = useQuery('blogCat', async () => client.fetch(allBlogCategories));
   const { data: activityCategories } = useQuery('actvityCat', async () =>

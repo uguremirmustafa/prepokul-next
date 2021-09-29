@@ -9,7 +9,7 @@ const MorePosts = ({ posts }) => {
       </div>
       <div className="more-posts">
         {posts.map((post, index) => (
-          <BlogCard post={post} index={index === 0 ? 3 : 5} />
+          <BlogCard key={index} post={post} index={index === 0 ? 3 : 5} />
         ))}
       </div>
     </>

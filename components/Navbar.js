@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import BlogIcon from './svgs/blogIcon';
 import CategoryIcon from './svgs/categoryIcon';
+import HamburgerIcon from './svgs/hamburgerIcon';
 import { AnimatePresence, motion } from 'framer-motion';
+import NavMenu from './NavMenu';
+import { useRouter } from 'next/router';
 
 const dropdownVariants = {
   initial: {
@@ -18,9 +21,16 @@ const dropdownVariants = {
 };
 
 const Navbar = ({ blogCategories, activityCategories }) => {
+  const router = useRouter();
   const { user, error, isLoading } = useUser();
   const [blogActive, setBlogActive] = useState(false);
   const [activityActive, setActivityActive] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    setActivityActive(false);
+    setActivityActive(false);
+    setOpen(false);
+  }, [router.asPath]);
   return (
     <header className="header">
       <nav className="navbar">
@@ -120,14 +130,22 @@ const Navbar = ({ blogCategories, activityCategories }) => {
           </Link>
         )}
         {user && (
-          <div>
+          <div className="user">
             <span>{user.name}</span>
             <Link href="/api/auth/logout">
               <button className="btn logout color-blue">çıkış</button>
             </Link>
           </div>
         )}
+        <motion.div
+          whileTap={{ scale: [0.8, 1.2, 1], transition: { duration: 0.4 } }}
+          className={`hamburger ${open ? 'openHamburger' : ''}`}
+          onClick={() => setOpen(!open)}
+        >
+          <HamburgerIcon />
+        </motion.div>
       </nav>
+      {open && <NavMenu blogCategories={blogCategories} activityCategories={activityCategories} />}
     </header>
   );
 };

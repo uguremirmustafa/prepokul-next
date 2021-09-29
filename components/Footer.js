@@ -5,32 +5,24 @@ import PinterestIcon from './svgs/pinterestIcon';
 import TwitterIcon from './svgs/twitterIcon';
 const Footer = ({ blogCategories, activityCategories }) => {
   const social = {
-    instagram: '',
+    instagram: 'https://www.instagram.com/prepokul/',
     twitter: '',
-    pinterest: '',
+    pinterest: 'https://tr.pinterest.com/prepokul/',
   };
+
   return (
     <footer className="footer">
       <div className="column-blog">
         <h4>Blog Kategorileri</h4>
         <ul>
-          {blogCategories?.map((cat) => (
-            <li>
+          {blogCategories?.map((cat, index) => (
+            <li key={index}>
               <Link href={`/blog/kategoriler/${cat.slug.current}`}>{cat.title}</Link>
             </li>
           ))}
         </ul>
       </div>
-      <div className="column-activity">
-        <h4>Etkinlik Kategorileri</h4>
-        <ul>
-          {activityCategories?.map((cat) => (
-            <li>
-              <Link href={`/etkinlikler/kategoriler/${cat.slug.current}`}>{cat.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+
       <div className="column-sitemap">
         <h4>Site Haritası</h4>
         <ul>
@@ -49,6 +41,16 @@ const Footer = ({ blogCategories, activityCategories }) => {
           <li>
             <Link href="/iletisim">İletişim</Link>
           </li>
+        </ul>
+      </div>
+      <div className="column-activity">
+        <h4>Etkinlik Kategorileri</h4>
+        <ul>
+          {activityCategories?.map((cat, index) => (
+            <li key={index}>
+              <Link href={`/etkinlikler/kategoriler/${cat.slug.current}`}>{cat.title}</Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="credits">
@@ -81,7 +83,7 @@ const Footer = ({ blogCategories, activityCategories }) => {
         <div className="sign">
           <p> prepokul &#169; {new Date().getFullYear()}</p>
           <p style={{ fontSize: '.7rem', marginTop: '1rem' }}>
-            developer and designed by
+            developed and designed by
             <a
               target="_blank"
               rel="noopener noreferrer"

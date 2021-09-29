@@ -1,38 +1,13 @@
 import React from 'react';
 import client from '../../lib/sanityClient';
-import BlockContent from '@sanity/block-content-to-react';
 import { post } from '../../lib/queries/post';
 import { allPostPaths } from '../../lib/queries/allPostPaths';
 import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatDate } from '../../utils/date-formatter';
-import { config } from '../../lib/sanityConfig';
-import Table from '../../components/Table';
 import MorePosts from '../../components/MorePosts';
-const serializers = {
-  types: {
-    image: (props) => {
-      const image = useNextSanityImage(client, props.node);
-      return (
-        <div className="imageWrapper">
-          <Image
-            src={image.src}
-            loader={image.loader}
-            width={image.width}
-            height={image.height}
-            quality={10}
-            layout="responsive"
-            objectFit="cover"
-            placeholder="blur"
-            blurDataURL={image.blurDataURL}
-          />
-        </div>
-      );
-    },
-    table: ({ node }) => <Table tableContent={node} />,
-  },
-};
+import PortableTextParser from '../../components/BlockContent';
 
 const Blog = ({ postData: post }) => {
   if (!post) {
@@ -70,7 +45,7 @@ const Blog = ({ postData: post }) => {
             </div>
           </div>
           <div className="post-body">
-            <BlockContent {...config} blocks={post.body} serializers={serializers} />
+            <PortableTextParser blocks={post.body} />
           </div>
           <MorePosts posts={post.relatedPosts} />
         </div>

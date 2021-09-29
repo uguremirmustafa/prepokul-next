@@ -1,4 +1,5 @@
 @use '../constants/colors' as *;
+@use '../layout/breakpoints' as *;
 
 .btn {
   border: none;
@@ -8,11 +9,16 @@
   padding: 0.5rem 1rem;
   background-color: $color-primary-200;
   color: white;
+  fill: white;
   cursor: pointer;
   position: relative;
   box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
     0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
     0 16px 16px hsl(0deg 0% 0% / 0.075);
+  @include media('<tablet') {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
   transition: background-color ease-in-out 0.3s;
   &:hover {
     background-color: $color-primary-100;

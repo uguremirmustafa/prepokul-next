@@ -1,4 +1,6 @@
 @use '../constants/colors' as *;
+@use '../layout/breakpoints' as *;
+
 .blog-card {
   height: 100%;
   min-height: 20rem;
@@ -16,7 +18,12 @@
     top: 1rem;
     left: 1rem;
     color: $color-light-100;
-
+    h2 {
+      // font-size: inherit;
+      @include media('<tablet') {
+        font-size: 1.3rem;
+      }
+    }
     .excerpt {
       margin: 1rem 0;
       font-size: 0.75rem;

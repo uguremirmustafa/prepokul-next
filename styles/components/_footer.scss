@@ -1,13 +1,17 @@
 @use '../constants/colors' as *;
+@use '../layout/breakpoints' as *;
 
 .footer {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 1fr 2fr;
   gap: 1rem;
   width: 100%;
   border-top: 1px solid $color-light-300;
   padding: 1rem 0;
   margin-top: 2rem;
+  @include media('<tablet') {
+    grid-template-columns: 1fr 1fr;
+  }
 
   .column-blog,
   .column-activity,
@@ -27,9 +31,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0.3rem;
+    @include media('<tablet') {
+      grid-template-columns: 1fr;
+    }
     h4 {
-      grid-column: span 2;
-      //   width: 100%;
+      grid-column: span 4;
     }
   }
   .credits {
@@ -46,6 +52,10 @@
         margin: 0 0.5rem;
       }
     }
+    @include media('<tablet') {
+      grid-column: span 2;
+    }
+
     .sign {
     }
   }

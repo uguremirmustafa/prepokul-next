@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const Hero = ({ posts }) => {
   const heroPost = posts[0];
-  const highlihtedPosts = posts.slice(1, 4);
+  const highlihtedPosts = posts.slice(1, 5);
   const heroImage = useNextSanityImage(client, heroPost.mainImage);
 
   return (

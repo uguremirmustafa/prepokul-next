@@ -1,0 +1,14 @@
+.about {
+  max-width: 660px;
+  margin: 2rem auto;
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  .wrapper {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

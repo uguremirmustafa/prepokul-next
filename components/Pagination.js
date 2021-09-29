@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
+import ArrowLeft from '../components/svgs/arrowLeft';
+import ArrowRight from '../components/svgs/arrowRight';
+import StopIcon from '../components/svgs/stopIcon';
 const Pagination = ({ type, count }) => {
   const router = useRouter();
   console.log(count);
@@ -46,12 +48,12 @@ const Pagination = ({ type, count }) => {
     <div className="pagination">
       {onFirst ? (
         <button className="btn" disabled={onFirst}>
-          <a>Ilk sayfa</a>
+          <StopIcon />
         </button>
       ) : (
         <Link href={`/${type}?start=${previousPage.start}&end=${previousPage.end}`}>
           <button className="btn" disabled={onFirst}>
-            önceki sayfa
+            <ArrowLeft />
           </button>
         </Link>
       )}
@@ -60,12 +62,12 @@ const Pagination = ({ type, count }) => {
       </span>
       {onLast ? (
         <button className="btn" disabled={onLast}>
-          <a>son sayfa</a>
+          <StopIcon />
         </button>
       ) : (
         <Link href={`/${type}?start=${nextPage.start}&end=${nextPage.end}`}>
           <button className="btn" disabled={onLast}>
-            sonraki sayfa
+            <ArrowRight />
           </button>
         </Link>
       )}

@@ -1,0 +1,44 @@
+.iletisim {
+  max-width: 660px;
+  margin: auto;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .iletisim-content {
+    z-index: 2;
+    width: 100%;
+    padding: 2rem;
+    background-color: rgba(1, 1, 1, 0.1);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+  }
+  .wrapper {
+    display: flex;
+    gap: 5px;
+    @media (max-width: 640px) {
+      justify-content: center;
+    }
+    a {
+      padding: 0.4rem;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all ease 0.3s;
+      :hover {
+        background-color: rgba(236, 201, 75, 1);
+      }
+      .icon {
+        color: black;
+        font-size: 2rem;
+      }
+    }
+  }
+}
