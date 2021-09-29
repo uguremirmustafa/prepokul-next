@@ -7,6 +7,7 @@ import HamburgerIcon from './svgs/hamburgerIcon';
 import { AnimatePresence, motion } from 'framer-motion';
 import NavMenu from './NavMenu';
 import { useRouter } from 'next/router';
+import InstagramIcon from './svgs/instagramIcon';
 
 const dropdownVariants = {
   initial: {
@@ -26,6 +27,7 @@ const Navbar = ({ blogCategories, activityCategories }) => {
   const [blogActive, setBlogActive] = useState(false);
   const [activityActive, setActivityActive] = useState(false);
   const [open, setOpen] = useState(false);
+
   useEffect(() => {
     setActivityActive(false);
     setActivityActive(false);
@@ -40,6 +42,13 @@ const Navbar = ({ blogCategories, activityCategories }) => {
             Prepokul
           </div>
         </Link>
+        <span className="etkinlikler-link">
+          <Link href="/etkinlikler">Etkinlikler</Link>
+          <a className="instagram-icon" href="https://instagram.com/prepokul">
+            <InstagramIcon />
+          </a>
+        </span>
+
         <ul>
           <li
             className="blog-link"
@@ -137,6 +146,7 @@ const Navbar = ({ blogCategories, activityCategories }) => {
             </Link>
           </div>
         )}
+
         <motion.div
           whileTap={{ scale: [0.8, 1.2, 1], transition: { duration: 0.4 } }}
           className={`hamburger ${open ? 'openHamburger' : ''}`}

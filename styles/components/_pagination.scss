@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 400px;
+  margin: auto;
   button {
     background-color: $color-teriatry-200;
     padding: 0.5rem 1rem;

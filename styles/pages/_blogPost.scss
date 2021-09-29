@@ -1,16 +1,25 @@
 @use '../constants/colors' as *;
+@use '../layout/breakpoints' as *;
+
 .blog-post {
   position: relative;
   margin: 3rem 0;
   min-height: 100vh;
   height: 100%;
   width: 100%;
+  @include media('<tablet') {
+    margin: 1rem 0;
+  }
   .post-meta {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     min-height: 25rem;
     height: 100%;
+    @include media('<tablet') {
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
     .imageWrapper {
       position: relative;
       width: 100%;
@@ -20,6 +29,9 @@
       box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075), 0 2px 2px hsl(0deg 0% 0% / 0.075),
         0 4px 4px hsl(0deg 0% 0% / 0.075), 0 8px 8px hsl(0deg 0% 0% / 0.075),
         0 16px 16px hsl(0deg 0% 0% / 0.075);
+      @include media('<tablet') {
+        height: 20rem;
+      }
     }
     .content {
       display: flex;
@@ -67,6 +79,9 @@
 .post-body {
   max-width: 660px;
   margin: 5rem auto;
+  @include media('<tablet') {
+    margin: 2rem auto;
+  }
   strong {
     color: $color-dark-300;
     font-weight: 600;

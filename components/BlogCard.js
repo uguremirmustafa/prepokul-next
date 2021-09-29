@@ -7,8 +7,11 @@ import { motion } from 'framer-motion';
 import { useApp } from '../context/AppContext';
 import { formatDate } from '../utils/date-formatter';
 import CalendarIcon from './svgs/calendarIcon';
-
+import useWindowSize from '../lib/hooks/useWindowSize';
 const BlogCard = ({ post, index }) => {
+  const { width, height } = useWindowSize();
+  let mobile = width < 800;
+  console.log(mobile);
   const { active, setActive } = useApp();
   const postImage = useNextSanityImage(client, post.mainImage);
   const postDate = formatDate(post.publishedAt);
@@ -62,16 +65,16 @@ const BlogCard = ({ post, index }) => {
 
   const variants = {
     animate: {
-      scale: 1.6,
-      x,
-      y,
+      scale: mobile ? 1 : 1.6,
+      x: mobile ? 0 : x,
+      y: mobile ? 0 : y,
       zIndex: 2,
-      transformOrigin,
+      transformOrigin: mobile ? 'center center' : transformOrigin,
       transition: { duration: 0.5, type: 'spring' },
     },
     exit: {
       scale: 1,
-      transformOrigin,
+      transformOrigin: mobile ? 'center center' : transformOrigin,
       transition: {
         zIndex: -1,
         duration: 0.4,
@@ -92,11 +95,17 @@ const BlogCard = ({ post, index }) => {
           <CalendarIcon />
           {postDate}
         </span>
-        <h2>{post.title}</h2>
-        {active !== index && <span className="category-name">{post.categoryName}</span>}
-        {active === index && (
+        {mobile ? (
+          <Link href={`/blog/${post.slug.current}`}>
+            <h2>{post.title}</h2>
+          </Link>
+        ) : (
+          <h2>{post.title}</h2>
+        )}
+        {(active !== index || mobile) && <span className="category-name">{post.categoryName}</span>}
+        {(active === index || mobile) && (
           <>
-            <p className="excerpt">{post.excerpt}</p>
+            {!mobile && <p className="excerpt">{post.excerpt}</p>}
             <span className="readmore">
               <Link href={`/blog/${post.slug.current}`}>devamını oku</Link>
             </span>

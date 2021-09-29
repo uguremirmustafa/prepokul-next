@@ -9,7 +9,7 @@ import TwitterIcon from './svgs/twitterIcon';
 
 const variants = {
   initial: {
-    x: -500,
+    x: 500,
     opacity: 0,
   },
   animate: {
@@ -21,7 +21,7 @@ const variants = {
     },
   },
   exit: {
-    x: -500,
+    x: 500,
     opacity: 0,
   },
 };
@@ -36,7 +36,13 @@ const NavMenu = ({ blogCategories, activityCategories }) => {
     pinterest: 'https://tr.pinterest.com/prepokul/',
   };
   return (
-    <nav className="navmenu">
+    <motion.nav
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={variants}
+      className="navmenu"
+    >
       <ul>
         <li className="blog-link" onClick={() => setBlogActive(!blogActive)}>
           {blogActive ? (
@@ -185,7 +191,7 @@ const NavMenu = ({ blogCategories, activityCategories }) => {
           </p>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
