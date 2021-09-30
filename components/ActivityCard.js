@@ -24,6 +24,11 @@ const ActivityCard = ({ activity }) => {
         />
         <div className="filter"></div>
       </div>
+      {isLoading && (
+        <a className="download btn" href="#">
+          yükleniyor...
+        </a>
+      )}
       {user ? (
         <a
           className="download btn"
