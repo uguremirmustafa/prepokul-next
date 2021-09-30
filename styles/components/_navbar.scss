@@ -78,6 +78,11 @@
       &:hover {
         color: white;
       }
+      > a {
+        &:hover {
+          color: $color-light-100;
+        }
+      }
     }
   }
   .logout,
