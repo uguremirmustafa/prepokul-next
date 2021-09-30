@@ -13,20 +13,22 @@ const Hero = ({ posts }) => {
 
   return (
     <div className="hero">
-      <div className="heroPost">
-        <div className="content">
-          <h2>{heroPost.title}</h2>
-          <p>{heroPost.categoryName}</p>
-          <span>
-            <CalendarIcon />
-            {formatDate(heroPost.publishedAt)}
-          </span>
+      <Link href={`/blog/${heroPost.slug.current}`}>
+        <div className="heroPost">
+          <div className="content">
+            <h2>{heroPost.title}</h2>
+            <p>{heroPost.categoryName}</p>
+            <span>
+              <CalendarIcon />
+              {formatDate(heroPost.publishedAt)}
+            </span>
+          </div>
+          <div className="imageWrapper">
+            <Image src={heroImage.src} loader={heroImage.loader} layout="fill" objectFit="cover" />
+            <div className="filter"></div>
+          </div>
         </div>
-        <div className="imageWrapper">
-          <Image src={heroImage.src} loader={heroImage.loader} layout="fill" objectFit="cover" />
-          <div className="filter"></div>
-        </div>
-      </div>
+      </Link>
       <div className="highlightedPosts">
         {highlihtedPosts.map((post) => {
           const postImage = useNextSanityImage(client, post.mainImage);

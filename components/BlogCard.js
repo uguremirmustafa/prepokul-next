@@ -85,27 +85,28 @@ const BlogCard = ({ post, index }) => {
   };
 
   return (
-    <motion.div
-      onClick={() => animateCard()}
-      variants={variants}
-      animate={active === index ? 'animate' : 'exit'}
-      className={`blog-card`}
-    >
-      <div className="content">
-        <span className="date">
-          <CalendarIcon />
-          {postDate}
-        </span>
-        <PageView slug={post.slug.current} />
+    <Link href={`/blog/${post.slug.current}`}>
+      <motion.div
+        // onClick={() => animateCard()}
+        // variants={variants}
+        // animate={active === index ? 'animate' : 'exit'}
+        className={`blog-card`}
+      >
+        <div className="content">
+          <span className="date">
+            <CalendarIcon />
+            {postDate}
+          </span>
+          <PageView slug={post.slug.current} />
 
-        {mobile ? (
-          <Link href={`/blog/${post.slug.current}`}>
-            <h2>{post.title}</h2>
-          </Link>
-        ) : (
+          {/* {mobile ? (
+            <Link href={`/blog/${post.slug.current}`}>
+              <h2>{post.title}</h2>
+            </Link>
+          ) : ( */}
           <h2>{post.title}</h2>
-        )}
-        {(active !== index || mobile) && (
+          {/* )} */}
+          {/* {(active !== index || mobile) && ( */}
           <>
             <span className="category-name">{post.categoryName}</span>
             {/* <span className="reading-time-card">
@@ -113,29 +114,30 @@ const BlogCard = ({ post, index }) => {
               <span>{post.readingTime} dakika</span>
             </span> */}
           </>
-        )}
-        {(active === index || mobile) && (
-          <>
-            {!mobile && <p className="excerpt">{post.excerpt}</p>}
-            <span className="readmore">
-              <Link href={`/blog/${post.slug.current}`}>devamını oku</Link>
-            </span>
-          </>
-        )}
-      </div>
-      <div className="wrapper">
-        <Image
-          src={postImage.src}
-          loader={postImage.loader}
-          placeholder="blur"
-          blurDataURL={postImage.blurDataURL}
-          quality={10}
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className="filter"></div>
-      </div>
-    </motion.div>
+          {/* )} */}
+          {/* {(active === index || mobile) && (
+            <>
+              {!mobile && <p className="excerpt">{post.excerpt}</p>}
+              <span className="readmore">
+                <Link href={`/blog/${post.slug.current}`}>devamını oku</Link>
+              </span>
+            </>
+          )} */}
+        </div>
+        <div className="wrapper">
+          <Image
+            src={postImage.src}
+            loader={postImage.loader}
+            placeholder="blur"
+            blurDataURL={postImage.blurDataURL}
+            quality={10}
+            layout="fill"
+            objectFit="cover"
+          />
+          <div className="filter"></div>
+        </div>
+      </motion.div>
+    </Link>
   );
 };
 
