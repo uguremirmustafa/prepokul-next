@@ -62,26 +62,14 @@ const NavMenu = ({ blogCategories, activityCategories }) => {
           )}
           <AnimatePresence exitBeforeEnter>
             {blogActive && (
-              <motion.div
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={variants}
-                // className="blogMenu"
-              >
+              <motion.div initial="initial" animate="animate" exit="exit" variants={variants}>
                 <ul className="blog-cat">
                   <li>
-                    {/* <BlogIcon /> */}
-                    <span>
-                      <Link href="/blog">Tümünü gör</Link>
-                    </span>
+                    <Link href="/blog">Tümünü gör</Link>
                   </li>
                   {blogCategories.map((cat) => (
                     <li key={cat._id}>
-                      {/* <BlogIcon /> */}
-                      <span>
-                        <Link href={`/blog/kategoriler/${cat.slug.current}`}>{cat.title}</Link>
-                      </span>
+                      <Link href={`/blog/kategoriler/${cat.slug.current}`}>{cat.title}</Link>
                     </li>
                   ))}
                 </ul>
@@ -167,7 +155,7 @@ const NavMenu = ({ blogCategories, activityCategories }) => {
           {user && (
             <div className="navmenu-user">
               <div className="avatar-name">
-                {user.picture && <img src={user.picture} alt={user.name} />}
+                {user.picture && <img src={user.picture} alt="" />}
                 <span>{user.name}</span>
               </div>
               <div>

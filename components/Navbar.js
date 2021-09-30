@@ -157,7 +157,11 @@ const Navbar = ({ blogCategories, activityCategories }) => {
           <HamburgerIcon />
         </motion.div>
       </nav>
-      {open && <NavMenu blogCategories={blogCategories} activityCategories={activityCategories} />}
+      <AnimatePresence exitBeforeEnter>
+        {open && (
+          <NavMenu blogCategories={blogCategories} activityCategories={activityCategories} />
+        )}
+      </AnimatePresence>
     </header>
   );
 };

@@ -15,8 +15,9 @@ body {
 a {
   color: $color-dark-300;
   text-decoration: none;
+  transition: color ease 0.2s;
   &:hover {
-    color: $color-primary-200;
+    color: $color-blue-100;
   }
 }
 
