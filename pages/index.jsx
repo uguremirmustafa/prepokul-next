@@ -21,7 +21,6 @@ const Home = (props) => {
     initialData: activitiesData,
     enabled: preview || router.query.preview !== undefined,
   });
-  console.log(latestPosts);
 
   return (
     <div>
@@ -36,7 +35,8 @@ const Home = (props) => {
       <ReadOthers text="Diğer etkinlikleri indir &raquo;" href="/etkinlikler" />
       <SectionTitle>Son Yazılar</SectionTitle>
       <div className="blogs">
-        {latestPosts && latestPosts.map((post, index) => <BlogCard index={index} post={post} />)}
+        {latestPosts &&
+          latestPosts.map((post, index) => <BlogCard key={index} index={index} post={post} />)}
       </div>
       <ReadOthers text="Diğer yazılarıma gözat &raquo;" href="/blog" />
     </div>

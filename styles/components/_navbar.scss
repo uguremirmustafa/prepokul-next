@@ -29,6 +29,9 @@
     gap: 2rem;
     align-items: center;
     justify-content: center;
+    @include media('>=desktop') {
+      display: none;
+    }
     .instagram-icon {
       padding: 0;
       margin: 0;

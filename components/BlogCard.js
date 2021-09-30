@@ -8,10 +8,11 @@ import { useApp } from '../context/AppContext';
 import { formatDate } from '../utils/date-formatter';
 import CalendarIcon from './svgs/calendarIcon';
 import useWindowSize from '../lib/hooks/useWindowSize';
+import PageView from './PageView';
+import ClockIcon from './svgs/clockIcon';
 const BlogCard = ({ post, index }) => {
   const { width, height } = useWindowSize();
   let mobile = width < 800;
-  console.log(mobile);
   const { active, setActive } = useApp();
   const postImage = useNextSanityImage(client, post.mainImage);
   const postDate = formatDate(post.publishedAt);
@@ -95,6 +96,8 @@ const BlogCard = ({ post, index }) => {
           <CalendarIcon />
           {postDate}
         </span>
+        <PageView slug={post.slug.current} />
+
         {mobile ? (
           <Link href={`/blog/${post.slug.current}`}>
             <h2>{post.title}</h2>
@@ -102,7 +105,15 @@ const BlogCard = ({ post, index }) => {
         ) : (
           <h2>{post.title}</h2>
         )}
-        {(active !== index || mobile) && <span className="category-name">{post.categoryName}</span>}
+        {(active !== index || mobile) && (
+          <>
+            <span className="category-name">{post.categoryName}</span>
+            {/* <span className="reading-time-card">
+              <ClockIcon />
+              <span>{post.readingTime} dakika</span>
+            </span> */}
+          </>
+        )}
         {(active === index || mobile) && (
           <>
             {!mobile && <p className="excerpt">{post.excerpt}</p>}

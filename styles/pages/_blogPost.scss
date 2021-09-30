@@ -58,6 +58,7 @@
         font-size: 0.8rem;
         font-weight: bold;
       }
+
       .author {
         display: flex;
         gap: 0.5rem;
@@ -121,5 +122,18 @@
       border-radius: 1rem;
       overflow: hidden;
     }
+  }
+}
+.reading-time,
+.page-view {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 0.6rem;
+  svg {
+    width: 1rem;
+    height: 1rem;
   }
 }

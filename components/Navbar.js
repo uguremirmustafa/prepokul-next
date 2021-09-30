@@ -42,6 +42,7 @@ const Navbar = ({ blogCategories, activityCategories }) => {
             Prepokul
           </div>
         </Link>
+
         <span className="etkinlikler-link">
           <Link href="/etkinlikler">Etkinlikler</Link>
           <a className="instagram-icon" href="https://instagram.com/prepokul">

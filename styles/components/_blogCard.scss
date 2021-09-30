@@ -41,7 +41,9 @@
       font-size: 0.8rem;
       font-weight: 600;
     }
-    .date {
+
+    .date,
+    .reading-time-card {
       margin: 1rem 0;
       width: max-content;
       display: flex;
@@ -52,12 +54,18 @@
         fill: white;
       }
     }
+    .page-view {
+      margin: 1rem 0;
+      svg {
+        fill: white;
+      }
+    }
     .category-name {
       padding-top: 8rem;
-
       position: relative;
       top: 0.5rem;
     }
+
     .readmore a {
       display: block;
       margin-top: 1rem;
@@ -68,6 +76,9 @@
       border-radius: 1rem;
       font-size: 0.6rem;
       transition: all ease 0.3s;
+      @include media('<tablet') {
+        display: none;
+      }
       &:hover {
         background-color: $color-light-100;
         color: $color-dark-300;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import client from '../../lib/sanityClient';
 import { post } from '../../lib/queries/post';
 import { allPostPaths } from '../../lib/queries/allPostPaths';
@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { formatDate } from '../../utils/date-formatter';
 import MorePosts from '../../components/MorePosts';
 import PortableTextParser from '../../components/BlockContent';
+import ClockIcon from '../../components/svgs/clockIcon';
+import PageViews from '../../components/PageView';
 
 const Blog = ({ postData: post }) => {
   if (!post) {
@@ -15,6 +17,13 @@ const Blog = ({ postData: post }) => {
   }
   const image = useNextSanityImage(client, post.mainImage);
   const avatar = useNextSanityImage(client, post.author.image);
+
+  useEffect(() => {
+    if (!post) return;
+    fetch(`/api/views/${post.slug.current}`, {
+      method: 'POST',
+    });
+  }, [post.slug.current]);
   return (
     <div>
       {post && (
@@ -42,6 +51,11 @@ const Blog = ({ postData: post }) => {
                 <span>{post.author.name}</span>
               </div>
               <span className="date">{formatDate(post.publishedAt)}</span>
+              <span className="reading-time">
+                <ClockIcon />
+                <span>{post.readingTime} dakika</span>
+              </span>
+              <PageViews slug={post.slug.current} />
             </div>
           </div>
           <div className="post-body">
