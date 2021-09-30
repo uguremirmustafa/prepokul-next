@@ -4,10 +4,15 @@ import { allPostPaths } from '../../../lib/queries/allPostPaths';
 import { allPostsUnderCategory } from '../../../lib/queries/allPostsUnderCategory';
 import SectionTitle from '../../../components/SectionTitle';
 import BlogCard from '../../../components/BlogCard';
+import SEO from '../../../components/SEO';
 
 const Blog = ({ data }) => {
   return (
     <>
+      <SEO
+        date={data.posts[0].publishedAt}
+        keywords={[...new Set(data.posts.map((post) => [...post.keywords]))]}
+      />
       {data && (
         <div>
           <SectionTitle>{data.title}</SectionTitle>

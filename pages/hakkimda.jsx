@@ -10,6 +10,10 @@ const Hakkimda = ({ data }) => {
 
   return (
     <div className="about">
+      <SEO
+        date={data.publishedAt || ''}
+        keywords={['okul öncesi öğretmeni', 'KPSS', 'feyza nur']}
+      />
       <h2>Ben Kimim?</h2>
       <div className="wrapper">
         <Image

@@ -10,6 +10,7 @@ import MorePosts from '../../components/MorePosts';
 import PortableTextParser from '../../components/BlockContent';
 import ClockIcon from '../../components/svgs/clockIcon';
 import PageViews from '../../components/PageView';
+import SEO from '../../components/SEO';
 
 const Blog = ({ postData: post }) => {
   if (!post) {
@@ -24,10 +25,12 @@ const Blog = ({ postData: post }) => {
       method: 'POST',
     });
   }, [post.slug.current]);
+
   return (
     <div>
       {post && (
         <div className="blog-post">
+          <SEO post={post} keywords={post.keywords} />
           <div className="post-meta">
             <div className="imageWrapper">
               <Image

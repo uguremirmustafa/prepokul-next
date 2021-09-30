@@ -3,10 +3,12 @@ import client from '../lib/sanityClient';
 import { posts } from '../lib/queries/posts';
 import BlogCard from '../components/BlogCard';
 import Pagination from '../components/Pagination';
+import SEO from '../components/SEO';
 
 const Blog = ({ postsData, count }) => {
   return (
     <div>
+      <SEO />
       {postsData && (
         <div className="blog-container">
           {postsData.map((post, index) => (

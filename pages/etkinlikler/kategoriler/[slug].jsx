@@ -4,19 +4,28 @@ import { allActivityCategories } from '../../../lib/queries/allActivityCategorie
 import { allActivitiesUnderCategory } from '../../../lib/queries/allActivitiesUnderCategory';
 import SectionTitle from '../../../components/SectionTitle';
 import ActivityCard from '../../../components/ActivityCard';
+import SEO from '../../../components/SEO';
 
 const Blog = ({ data }) => {
   return (
     <>
       {data && (
-        <div className="">
-          <SectionTitle>{data.title}</SectionTitle>
-          <div className="activities-container">
-            {data.activities.map((activity, index) => (
-              <ActivityCard activity={activity} key={index} index={index} />
-            ))}
+        <>
+          <SEO
+            date={data.activities[0].publishedAt}
+            keywords={[...new Set(data.activities.map((act) => [...act.keywords]))]}
+            title={data.title}
+            excerpt={`${data.title} okul öncesi etkinlikleri`}
+          />
+          <div className="">
+            <SectionTitle>{data.title}</SectionTitle>
+            <div className="activities-container">
+              {data.activities.map((activity, index) => (
+                <ActivityCard activity={activity} key={index} index={index} />
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
@@ -37,7 +46,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const slugs = await client.fetch(allActivityCategories);
   const paths = await slugs.map((slug) => ({ params: { slug: slug.slug.current } }));
-  //   console.log(paths);
+
   return {
     paths,
     fallback: true,

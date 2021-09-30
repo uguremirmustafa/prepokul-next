@@ -9,6 +9,7 @@ import ActivityCard from '../components/ActivityCard';
 import BlogCard from '../components/BlogCard';
 import SectionTitle from '../components/SectionTitle';
 import ReadOthers from '../components/ReadOthers';
+import SEO from '../components/SEO';
 const Home = (props) => {
   const router = useRouter();
   const { postdata, preview, activitiesData, latestPosts } = props;
@@ -24,6 +25,7 @@ const Home = (props) => {
 
   return (
     <div>
+      <SEO />
       {heroPostsData && <Hero posts={heroPostsData} />}
       <SectionTitle>Son Etkinlikler</SectionTitle>
       <div className="activities">
@@ -50,6 +52,7 @@ export async function getStaticProps({ params, preview = false }) {
   const { posts: latestPosts, count } = await getClient(preview).fetch(posts, {
     start: 4,
     end: 10,
+    featured: true,
   });
 
   return {

@@ -1,6 +1,7 @@
 import React from 'react';
 import ContactForm from '../components/ContactForm';
 import SectionTitle from '../components/SectionTitle';
+import SEO from '../components/SEO';
 import InstagramIcon from '../components/svgs/instagramIcon';
 import PinterestIcon from '../components/svgs/pinterestIcon';
 import TwitterIcon from '../components/svgs/twitterIcon';
@@ -8,6 +9,7 @@ import TwitterIcon from '../components/svgs/twitterIcon';
 const Iletisim = () => {
   return (
     <div className="iletisim">
+      <SEO />
       <SectionTitle>Bize Ulaşın!</SectionTitle>
       <div className="grid">
         <div className="formWrapper">
