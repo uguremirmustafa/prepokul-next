@@ -1,10 +1,21 @@
 @use '../layout/breakpoints' as *;
 .blog-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
   margin-bottom: 2rem;
-  @include media('<tablet') {
-    grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  :nth-child(1),
+  :nth-child(4),
+  :nth-child(5) {
+    grid-column: span 2;
+  }
+
+  @include media('<600px') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  h2 {
+    @include media('<600px') {
+      font-size: 1rem !important;
+    }
   }
 }

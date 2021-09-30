@@ -3,7 +3,7 @@
 
 .activities {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
 .activity-card {
@@ -18,12 +18,9 @@
     height: 14rem;
   }
   &:hover .wrapper > .filter {
-    opacity: 0.6;
+    opacity: 0.9;
   }
-  &:hover h2 {
-    // color: $color-secondary-200;
-    text-shadow: 0 0 20px 200px $color-light-100;
-  }
+
   h2 {
     position: absolute;
     font-size: 1.8rem;
@@ -49,8 +46,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-blend-mode: darken;
-      background-color: rgba(1, 1, 1, 0.5);
+      background-blend-mode: color;
+      background-color: rgba(12, 182, 168, 0.788);
       opacity: 1;
       transition: all ease-in-out 0.3s;
     }
@@ -60,8 +57,16 @@
     text-align: center;
     position: relative;
     bottom: 3.5rem;
-    width: 80%;
+    width: 70%;
+    min-width: 4rem;
     margin: auto;
+    background-color: $color-light-100;
+    color: $color-dark-300;
+    transition: all ease 0.3s;
+    &:hover {
+      background-color: $color-light-200;
+      color: $color-dark-300;
+    }
     @include media('<tablet') {
       bottom: 3rem;
     }

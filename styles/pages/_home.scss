@@ -3,12 +3,12 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   @include media('<desktop') {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   @include media('<tablet') {
     grid-template-columns: repeat(3, 1fr);
   }
-  @include media('<phone') {
+  @include media('<500px') {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -16,6 +16,12 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
+  :nth-child(1),
+  :nth-child(4),
+  :nth-child(5) {
+    grid-column: span 2;
+  }
+
   @include media('<600px') {
     grid-template-columns: repeat(2, 1fr);
   }

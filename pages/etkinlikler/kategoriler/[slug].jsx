@@ -12,8 +12,8 @@ const Blog = ({ data }) => {
         <div className="">
           <SectionTitle>{data.title}</SectionTitle>
           <div className="activities-container">
-            {data.activities.map((activity) => (
-              <ActivityCard activity={activity} />
+            {data.activities.map((activity, index) => (
+              <ActivityCard activity={activity} key={index} index={index} />
             ))}
           </div>
         </div>

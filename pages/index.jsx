@@ -29,7 +29,7 @@ const Home = (props) => {
       <div className="activities">
         {latestActivitiesData &&
           latestActivitiesData.map((activity, index) => (
-            <ActivityCard key={index} activity={activity} />
+            <ActivityCard key={index} activity={activity} index={index} />
           ))}
       </div>
       <ReadOthers text="Diğer etkinlikleri indir &raquo;" href="/etkinlikler" />
