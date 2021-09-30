@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import NavMenu from './NavMenu';
 import { useRouter } from 'next/router';
 import InstagramIcon from './svgs/instagramIcon';
+import Router from 'next/router';
 
 const dropdownVariants = {
   initial: {
@@ -22,17 +23,17 @@ const dropdownVariants = {
 };
 
 const Navbar = ({ blogCategories, activityCategories }) => {
-  const router = useRouter();
   const { user, error, isLoading } = useUser();
   const [blogActive, setBlogActive] = useState(false);
   const [activityActive, setActivityActive] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    setActivityActive(false);
-    setActivityActive(false);
+  Router.events.on('routeChangeStart', () => {
     setOpen(false);
-  }, [router.asPath]);
+    setActivityActive(false);
+    setActivityActive(false);
+  });
+
   return (
     <header className="header">
       <nav className="navbar">
@@ -128,7 +129,7 @@ const Navbar = ({ blogCategories, activityCategories }) => {
             <Link href="/iletisim">İletişim</Link>
           </li>
         </ul>
-        {isLoading && <button className="btn">yükleniyor...</button>}
+        {isLoading && <button className="btn loading">yükleniyor...</button>}
         {!isLoading && !user && (
           <Link href="/api/auth/login">
             <button className="btn login">giriş</button>

@@ -29,7 +29,6 @@ const Hakkimda = ({ data }) => {
 };
 export async function getStaticProps() {
   const data = await client.fetch(author);
-  console.log(data);
   return {
     props: {
       data,

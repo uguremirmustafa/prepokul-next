@@ -6,6 +6,7 @@ import ArrowRight from '../components/svgs/arrowRight';
 import InstagramIcon from './svgs/instagramIcon';
 import PinterestIcon from './svgs/pinterestIcon';
 import TwitterIcon from './svgs/twitterIcon';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const variants = {
   initial: {
@@ -29,6 +30,7 @@ const variants = {
 const NavMenu = ({ blogCategories, activityCategories }) => {
   const [blogActive, setBlogActive] = useState(false);
   const [activityActive, setActivityActive] = useState(false);
+  const { user, error, isLoading } = useUser();
 
   const social = {
     instagram: 'https://www.instagram.com/prepokul/',
@@ -149,6 +151,34 @@ const NavMenu = ({ blogCategories, activityCategories }) => {
           </>
         )}
       </ul>
+      {!blogActive && !activityActive && (
+        <div className="auth">
+          {isLoading && <button className="btn loading">yükleniyor...</button>}
+          {!isLoading && !user && (
+            <Link href="/api/auth/login">
+              <button className="btn login">giriş</button>
+            </Link>
+          )}
+          {!isLoading && error && (
+            <Link href="/api/auth/login">
+              <button className="btn login">!</button>
+            </Link>
+          )}
+          {user && (
+            <div className="navmenu-user">
+              <div className="avatar-name">
+                {user.picture && <img src={user.picture} alt={user.name} />}
+                <span>{user.name}</span>
+              </div>
+              <div>
+                <Link href="/api/auth/logout">
+                  <button className="btn logout color-blue">çıkış</button>
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
       <div className="credits">
         <div className="logos">
           <a
