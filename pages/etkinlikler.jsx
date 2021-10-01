@@ -12,7 +12,7 @@ const Activities = ({ activitiesData, count }) => {
           <SEO
             title="Okul öncesi etkinlikler"
             date={activitiesData[0].publishedAt}
-            keywords={[...new Set(data.activities.map((act) => [...act.keywords]))]}
+            // keywords={[...new Set(data.activities.map((act) => [...act.keywords]))]}
             excerpt={`Çeşitli kategorilerdeki okul öncesi etkinliklerini indir.`}
           />
           <div className="activities-container">

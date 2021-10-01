@@ -4,6 +4,7 @@ import { author } from '../lib/queries/author';
 import client from '../lib/sanityClient';
 import Image from 'next/image';
 import { useNextSanityImage } from 'next-sanity-image';
+import SEO from '../components/SEO';
 const Hakkimda = ({ data }) => {
   const { bio, image: avatar } = data;
   const image = useNextSanityImage(client, avatar);

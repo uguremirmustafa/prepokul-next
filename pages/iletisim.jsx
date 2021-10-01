@@ -9,7 +9,12 @@ import TwitterIcon from '../components/svgs/twitterIcon';
 const Iletisim = () => {
   return (
     <div className="iletisim">
-      <SEO />
+      <SEO
+        date=""
+        keywords={['iletişim']}
+        title="İletişim"
+        excerpt="Bize Instagram, Pinterest veya Twitter aracılığıyla ulaşabilirsiniz."
+      />
       <SectionTitle>Bize Ulaşın!</SectionTitle>
       <div className="grid">
         <div className="formWrapper">

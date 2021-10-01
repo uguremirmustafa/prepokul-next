@@ -8,13 +8,20 @@ import SEO from '../components/SEO';
 const Blog = ({ postsData, count }) => {
   return (
     <div>
-      <SEO />
       {postsData && (
-        <div className="blog-container">
-          {postsData.map((post, index) => (
-            <BlogCard key={index} post={post} index={index} />
-          ))}
-        </div>
+        <>
+          <SEO
+            date={postsData[0].publishedAt}
+            title=""
+            // keywords={[...new Set(postsData.map((post) => [...post.keywords]))]}
+            excerpt={`Okul öncesi eğitime dair çeşitli konulardaki makale ve etkinlikleri incele.`}
+          />
+          <div className="blog-container">
+            {postsData.map((post, index) => (
+              <BlogCard key={index} post={post} index={index} />
+            ))}
+          </div>
+        </>
       )}
       <Pagination type="blog" count={count} />
     </div>

@@ -9,19 +9,31 @@ import SEO from '../../../components/SEO';
 const Blog = ({ data }) => {
   return (
     <>
-      <SEO
-        date={data.posts[0].publishedAt}
-        keywords={[...new Set(data.posts.map((post) => [...post.keywords]))]}
-      />
       {data && (
-        <div>
-          <SectionTitle>{data.title}</SectionTitle>
-          <div className="blog-container">
-            {data.posts.map((post, index) => (
-              <BlogCard index={index} post={post} />
-            ))}
+        <>
+          <SEO
+            date={data.posts[0].publishedAt}
+            keywords={[
+              ...new Set(
+                data.posts.map((act) => {
+                  if (act.keywords) {
+                    return [...act.keywords];
+                  } else {
+                    return act.title;
+                  }
+                })
+              ),
+            ]}
+          />
+          <div>
+            <SectionTitle>{data.title}</SectionTitle>
+            <div className="blog-container">
+              {data.posts.map((post, index) => (
+                <BlogCard index={index} post={post} />
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

@@ -13,7 +13,17 @@ const Blog = ({ data }) => {
         <>
           <SEO
             date={data.activities[0].publishedAt}
-            keywords={[...new Set(data.activities.map((act) => [...act.keywords]))]}
+            keywords={[
+              ...new Set(
+                data.activities.map((act) => {
+                  if (act.keywords) {
+                    return [...act.keywords];
+                  } else {
+                    return act.title;
+                  }
+                })
+              ),
+            ]}
             title={data.title}
             excerpt={`${data.title} okul öncesi etkinlikleri`}
           />

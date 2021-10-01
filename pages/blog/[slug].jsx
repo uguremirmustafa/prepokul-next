@@ -30,7 +30,12 @@ const Blog = ({ postData: post }) => {
     <div>
       {post && (
         <div className="blog-post">
-          <SEO post={post} keywords={post.keywords} />
+          <SEO
+            date={post.publishedAt}
+            title={post.title}
+            excerpt={post.excerpt}
+            keywords={post.keywords ? [...post.keywords] : post.title}
+          />
           <div className="post-meta">
             <div className="imageWrapper">
               <Image
