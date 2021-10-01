@@ -34,7 +34,7 @@ const Blog = ({ postData: post }) => {
             date={post.publishedAt}
             title={post.title}
             excerpt={post.excerpt}
-            keywords={post.keywords ? [...post.keywords] : post.title}
+            keywords={post.keywords ? post.keywords : post.title}
           />
           <div className="post-meta">
             <div className="imageWrapper">
